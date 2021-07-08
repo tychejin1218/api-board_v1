@@ -24,9 +24,13 @@ public class BoardController {
 	@GetMapping
 	public List<Board> getBoardList() throws Exception {
 		
-		logger.info("===== ===== ===== =====");
-		logger.info("BoardController.getBoardList()");
-		logger.info("===== ===== ===== =====");
+		logger.info("===== ===== ===== logging.level.com.api.board.controller - Logger Level ===== ===== =====");
+        logger.trace("Logger Level - [TRACE]"); 
+        logger.debug("Logger Level - [DEBUG]"); 
+        logger.info("Logger Level - [INFO]"); 
+        logger.warn("Logger Level - [WARN]"); 
+        logger.error("Logger Level - [ERROR]");
+        logger.info("===== ===== ===== logging.level.com.api.board.controller - Logger Level ===== ===== =====");
 		
 		return boardService.getBoardList();
 	}
