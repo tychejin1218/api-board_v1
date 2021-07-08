@@ -14,3 +14,5 @@
   	- ###### https://tychejin.tistory.com/167  
   - ##### [Spring Boot] REST API 게시판 만들기(2) - MySQL + MyBatis 연동
   	- ###### https://tychejin.tistory.com/169
+  - ##### [Spring Boot] REST API 게시판 만들기(3) - Logback 설정
+  	- ###### https://tychejin.tistory.com/170  
