@@ -20,15 +20,6 @@ public class BoardService {
 
 	/** 게시글 목록 조회 */
 	public List<Board> getBoardList() throws Exception {
-
-		logger.info("===== ===== ===== logging.level.com.api.board - Logger Level ===== ===== =====");
-		logger.trace("Logger Level - [TRACE]");
-		logger.debug("Logger Level - [DEBUG]");
-		logger.info("Logger Level - [INFO]");
-		logger.warn("Logger Level - [WARN]");
-		logger.error("Logger Level - [ERROR]");
-		logger.info("===== ===== ===== logging.level.com.api.board - Logger Level ===== ===== =====");
-
 		return boardMapper.getBoardList();
 	}
 }
