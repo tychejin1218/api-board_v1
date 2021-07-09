@@ -103,8 +103,8 @@
     <!-- ResultSet을 제외한 모든 JDBC 호출 정보를 로그로 출력--> 
     <logger name="jdbc.audit" level="OFF"/> 
     <!-- ResultSet을 포함한 모든 JDBC 호출 정보를 로그로 출력 -->    
-     <logger name="jdbc.resultset" level="OFF"/> 
-     <!-- SQL 결과 조회된 데이터의 table을 로그로 출력 --> 
-     <logger name="jdbc.resultsettable" level="DEBUG"/>
+    <logger name="jdbc.resultset" level="OFF"/> 
+	<!-- SQL 결과 조회된 데이터의 table을 로그로 출력 --> 
+    <logger name="jdbc.resultsettable" level="DEBUG"/>
     
 </configuration>
