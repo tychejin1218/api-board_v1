@@ -16,7 +16,12 @@ public class BoardInterceptor implements HandlerInterceptor {
     public boolean preHandle( HttpServletRequest request
     		                , HttpServletResponse response
     		                , Object handler ) throws Exception {
-        logger.info("===== ===== ===== ===== ===== preHandle");
+        
+    	 if (logger.isDebugEnabled()) {
+             logger.debug("===== ===== ===== ===== =====    START     ===== ===== ===== ===== =====");
+             logger.debug("RequestURI:[{}]", request.getRequestURI());
+         }
+    	
         return true;
     }
  
@@ -25,7 +30,10 @@ public class BoardInterceptor implements HandlerInterceptor {
     		              , HttpServletResponse response
     		              , Object handler
     		              , ModelAndView modelAndView ) throws Exception {
-        logger.info("===== ===== ===== ===== ===== postHandle");
+        
+    	 if (logger.isDebugEnabled()) {
+             logger.debug("===== ===== ===== ===== =====     END     ===== ===== ===== ===== =====\n");
+         }
     }
  
     @Override
@@ -33,6 +41,5 @@ public class BoardInterceptor implements HandlerInterceptor {
     		                   , HttpServletResponse response
     		                   , Object handler
     		                   , Exception ex ) throws Exception {
-        logger.info("===== ===== ===== ===== ===== afterCompletion");
     }
 }
