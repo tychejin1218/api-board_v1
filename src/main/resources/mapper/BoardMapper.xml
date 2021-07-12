@@ -6,25 +6,103 @@
     
     <select id="getBoardList" resultType="com.api.board.domain.Board">
                                          
-        SELECT T1.*
+        SELECT *
           FROM ( 
-	                SELECT BOARD_SEQ 
-	                     , BOARD_RE_REF 
-	                     , BOARD_RE_LEV 
-	                     , BOARD_RE_SEQ 
-	                     , BOARD_WRITER 
-	                     , BOARD_SUBJECT 
-	                     , BOARD_CONTENT 
-	                     , BOARD_HITS
-	                     , DEL_YN 
-	                     , INS_USER_ID
-	                     , CAST( DATE_FORMAT( INS_DATE, '%Y-%m-%d %H:%i:%s' ) AS CHAR(19) ) AS INS_DATE
-	                     , UPD_USER_ID
-	                     , CAST( DATE_FORMAT( UPD_DATE, '%Y-%m-%d %H:%i:%s' ) AS CHAR(19) ) AS UPD_DATE  
-	                  FROM BOARD.TB_BOARD
+					SELECT BOARD_SEQ 
+                    	 , BOARD_RE_REF 
+                     	 , BOARD_RE_LEV 
+                     	 , BOARD_RE_SEQ 
+                     	 , BOARD_WRITER 
+                     	 , BOARD_SUBJECT 
+                     	 , BOARD_CONTENT 
+                     	 , BOARD_HITS
+                     	 , DEL_YN 
+                     	 , INS_USER_ID
+                     	 , CAST( DATE_FORMAT( INS_DATE, '%Y-%m-%d %H:%i:%s' ) AS CHAR(19) ) AS INS_DATE
+                     	 , UPD_USER_ID
+                      	 , CAST( DATE_FORMAT( UPD_DATE, '%Y-%m-%d %H:%i:%s' ) AS CHAR(19) ) AS UPD_DATE  
+               	      FROM BOARD.TB_BOARD
+                     ORDER BY BOARD_RE_REF DESC, BOARD_RE_SEQ ASC
                 ) T1
-         ORDER BY BOARD_RE_REF DESC, BOARD_RE_SEQ ASC                
          
     </select>
+    
+    <select id="getBoardDetail" parameterType="int" resultType="com.api.board.domain.Board">
+    
+        SELECT T1.*
+          FROM (
+                    SELECT BOARD_SEQ 
+                         , BOARD_RE_REF 
+                         , BOARD_RE_LEV 
+                         , BOARD_RE_SEQ 
+                         , BOARD_WRITER 
+                         , BOARD_SUBJECT 
+                         , BOARD_CONTENT 
+                         , BOARD_HITS
+                         , DEL_YN 
+                         , INS_USER_ID
+                         , CAST( DATE_FORMAT( INS_DATE, '%Y-%m-%d %H:%i:%s' ) AS CHAR(19) ) AS INS_DATE
+                         , UPD_USER_ID
+                         , CAST( DATE_FORMAT( UPD_DATE, '%Y-%m-%d %H:%i:%s' ) AS CHAR(19) ) AS UPD_DATE  
+                      FROM BOARD.TB_BOARD
+                     WHERE BOARD_SEQ = #{board_seq}        
+                ) T1        
+    
+    </select>
+    
+    <insert id="insertBoard" parameterType="com.api.board.domain.Board">
+        
+        <selectKey resultType="int" keyProperty="board_seq" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        
+        INSERT 
+          INTO BOARD.TB_BOARD 
+             (
+                  BOARD_RE_REF
+              	, BOARD_RE_LEV
+              	, BOARD_RE_SEQ
+              	, BOARD_WRITER
+              	, BOARD_SUBJECT
+              	, BOARD_CONTENT
+              	, INS_USER_ID
+              	, INS_DATE
+              	, UPD_USER_ID
+              	, UPD_DATE
+              ) 
+        VALUES 
+        	 (
+                  0
+            	, 0
+            	, 0
+            	, #{board_writer}
+            	, #{board_subject}
+            	, #{board_content}
+            	, 'TEST'
+            	, NOW() 
+            	, 'TEST'
+            	, NOW() 
+        	  )
+            
+    </insert>
+    
+    <delete id="updateBoard" parameterType="com.api.board.domain.Board">
+    
+        UPDATE BOARD.TB_BOARD 
+           SET BOARD_SUBJECT = #{board_subject}
+             , BOARD_CONTENT = #{board_content}
+             , UPD_USER_ID = 'TEST'
+             , UPD_DATE = NOW()
+         WHERE BOARD_SEQ = #{board_seq}
+    
+    </delete>
+    
+    <delete id="deleteBoard" parameterType="int">
+    
+        DELETE 
+          FROM BOARD.TB_BOARD 
+         WHERE BOARD_SEQ = #{board_seq}
+    
+    </delete>
     
 </mapper>
