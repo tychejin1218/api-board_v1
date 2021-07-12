@@ -18,3 +18,5 @@
   	- ###### https://tychejin.tistory.com/170  
   - ##### [Spring Boot] REST API 게시판 만들기(4) - Log4jdbc 설정
   	- ###### https://tychejin.tistory.com/171  
+  - ##### [Spring Boot] REST API 게시판 만들기(5) - Mapper 구현 및 테스트
+  	- ###### https://tychejin.tistory.com/172 
