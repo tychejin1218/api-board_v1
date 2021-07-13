@@ -22,3 +22,5 @@
   	- ###### https://tychejin.tistory.com/172  
   - ##### [Spring Boot] REST API 게시판 만들기(6) - Interceptor 적용
   	- ###### https://tychejin.tistory.com/173  
+  - ##### [Spring Boot] REST API 게시판 만들기(7) - Transaction 적용
+  	- ###### https://tychejin.tistory.com/174  
