@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -29,18 +28,6 @@ public class BoardMapperTest {
 	BoardMapper boardMapper;
 	
 	int boardSeq = 0;
-	
-	/** 게시글 목록 조회 시 첫 번째 board_seq 조회 */
-	@Before
-	public void testGetBoardSeq() throws Exception {
-		
-		List<Board> boardList = boardMapper.getBoardList();		
-		if(boardList.size() > 0) {
-			boardSeq = boardList.get(0).getBoard_seq();
-		}
-		
-		logger.info("boardSeq:[{}]", boardSeq);
-	}
 	
 	/** 게시글 목록 조회 시 NULL 아니면 테스트 통과 */
 	@Test
