@@ -25,4 +25,6 @@
   - ##### [Spring Boot] REST API 게시판 만들기(7) - Transaction 적용
   	- ###### https://tychejin.tistory.com/174  
   - ##### [Spring Boot] REST API 게시판 만들기(8) - Service 구현 및 테스트
-  	- ###### https://tychejin.tistory.com/175 
+  	- ###### https://tychejin.tistory.com/175  
+  - ##### [Spring Boot] REST API 게시판 만들기(9) - Controller 구현 및 테스트
+  	- ###### https://tychejin.tistory.com/176  
