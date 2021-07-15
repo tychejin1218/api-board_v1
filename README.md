@@ -28,3 +28,5 @@
   	- ###### https://tychejin.tistory.com/175  
   - ##### [Spring Boot] REST API 게시판 만들기(9) - Controller 구현 및 테스트
   	- ###### https://tychejin.tistory.com/176  
+  - ##### [Spring Boot] REST API 게시판 만들기(10) - XML 요청/응답 구현 및 테스트
+  	- ###### https://tychejin.tistory.com/177  
