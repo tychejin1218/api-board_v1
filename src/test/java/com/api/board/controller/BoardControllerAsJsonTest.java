@@ -35,7 +35,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Transactional
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class BoardControllerTest {
+public class BoardControllerAsJsonTest {
  
     Logger logger = LoggerFactory.getLogger(BoardServiceTest.class);
  
@@ -137,11 +137,8 @@ public class BoardControllerTest {
                 							 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 							 .content(this.mapToJson(updateBoard)))
                 							 .andReturn();
-         
-                int status = mvcResult.getResponse()
-                					  .getStatus();
              
-                assertEquals(200, status);
+                assertEquals(200, mvcResult.getResponse().getStatus());
             } 
     		
 		} catch (Exception e) {
@@ -161,10 +158,7 @@ public class BoardControllerTest {
                 MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.delete("/board/" + boardSeq))
                 							 .andReturn();
          
-                int status = mvcResult.getResponse()
-                					  .getStatus();
-
-                assertEquals(200, status);
+                assertEquals(200, mvcResult.getResponse().getStatus());
         	}
     		
 		} catch (Exception e) {
