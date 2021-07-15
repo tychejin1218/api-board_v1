@@ -1,7 +1,5 @@
 package com.api.board.controller;
  
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api.board.domain.Board;
+import com.api.board.domain.Boards;
 import com.api.board.service.BoardService;
  
 @RequestMapping("/board")
@@ -26,8 +25,12 @@ public class BoardController {
  
     /** 게시글 목록 조회 */
     @GetMapping
-    public List<Board> getBoardList() throws Exception {
-        return boardService.getBoardList();
+    public Boards getBoardList() throws Exception {
+        
+    	Boards boards = new Boards();
+    	boards.setBoards(boardService.getBoardList());
+    	
+    	return boards;
     }
  
     /** 게시글 상세 조회 */

@@ -1,5 +1,10 @@
 package com.api.board.domain;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlRootElement(name = "board")
+@XmlType(propOrder = {"board_seq", "board_re_ref", "board_re_lev", "board_re_seq", "board_writer", "board_subject", "board_content", "board_hits", "del_yn", "ins_user_id", "ins_date", "upd_user_id", "upd_date"})
 public class Board {
 
 	int board_seq;
