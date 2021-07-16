@@ -12,6 +12,10 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.api.board.interceptor.BoardInterceptor;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.module.jaxb.JaxbAnnotationModule;
  
 @ComponentScan(basePackages = {"com.api.board.controller"}, useDefaultFilters = false, includeFilters = {@Filter(Controller.class)})
 @Configuration
@@ -26,8 +30,16 @@ public class WebMvcConfig implements WebMvcConfigurer {
     
     @Bean
     public MappingJackson2HttpMessageConverter mappingJacksonHttpMessageConverter() {
-        MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-        converter.setPrettyPrint(true);
+ 
+    	MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+        
+    	ObjectMapper objectMapper = converter.getObjectMapper();
+        objectMapper.configure(DeserializationFeature.UNWRAP_ROOT_VALUE, true);
+        objectMapper.configure(SerializationFeature.WRAP_ROOT_VALUE, true);
+ 
+        JaxbAnnotationModule module = new JaxbAnnotationModule();
+        objectMapper.registerModule(module);
+ 
         return converter;
     }
     
