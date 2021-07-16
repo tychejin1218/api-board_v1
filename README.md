@@ -5,8 +5,8 @@
 - #### 개발 환경
   - ##### IDE(Spring Tool Suite 4) 
   - ##### JDK 1.8
-  - ##### Spring Boot 2.2.6
-  - ##### Maven 4.0.0
+  - ##### Spring Boot 2.2.7
+  - ##### Maven 3.3.9
   - ##### MySQL 5.7.21
 
 - #### 개발 설명
@@ -32,3 +32,5 @@
   	- ###### https://tychejin.tistory.com/177  
   - ##### [Spring Boot] REST API 게시판 만들기(11) - JSON Root Element 추가
   	- ###### https://tychejin.tistory.com/178  
+  - ##### [Spring Boot] REST API 게시판 만들기(12) - Content Negotiation 설정
+  	- ###### https://tychejin.tistory.com/179  
