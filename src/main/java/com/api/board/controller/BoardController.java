@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.api.board.domain.Board;
 import com.api.board.domain.Boards;
+import com.api.board.exception.ResourceNotFoundException;
 import com.api.board.service.BoardService;
  
 @RequestMapping("/board")
@@ -36,7 +37,14 @@ public class BoardController {
     /** 게시글 상세 조회 */
     @GetMapping("/{board_seq}")
     public Board getBoardDetail(@PathVariable("board_seq") int board_seq) throws Exception {
-        return boardService.getBoardDetail(board_seq);
+        
+    	Board board = boardService.getBoardDetail(board_seq);
+        
+        if(board == null) {
+        	throw new ResourceNotFoundException();
+        }
+        
+    	return board; 
     }
  
     /** 게시글 등록  */
