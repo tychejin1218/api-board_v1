@@ -40,25 +40,45 @@ public class BoardControllerExceptionTest {
         						 .build();
     }
  
+    int boardSeq = 0;
+    
     /** 게시글 상세 조회 시 응답 값이 404이면 테스트 통과 */
     @Test
-    public void getBoardDetailJSON() throws Exception {
+    public void getBoardDetailJSON(){
  
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/board/0")
-        							 .accept(MediaType.APPLICATION_XML))
-        							 .andReturn();
-  
-        assertEquals(404, mvcResult.getResponse().getStatus());
+    	try {
+    		
+    		if (boardSeq != 0) {
+    			
+    			MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/board/" + boardSeq)
+						 .accept(MediaType.APPLICATION_XML))
+						 .andReturn();
+
+    			assertEquals(404, mvcResult.getResponse().getStatus());	
+    		}
+    		
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
     }
  
     /** 게시글 상세 조회 시 응답 값이 404이면 테스트 통과 */
     @Test
     public void getBoardDetailXML() throws Exception {
         
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/board/0")
-				 					 .accept(MediaType.APPLICATION_JSON))
-				 					 .andReturn();
+    	try {
+    		
+    		if (boardSeq != 0) {
+    			
+    			MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/board/" + boardSeq)
+						 .accept(MediaType.APPLICATION_JSON))
+						 .andReturn();
 
-        assertEquals(404, mvcResult.getResponse().getStatus());
+    			assertEquals(404, mvcResult.getResponse().getStatus());	
+    		}
+    		
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
     }
 }
