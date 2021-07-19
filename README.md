@@ -5,7 +5,7 @@
 - #### 개발 환경
   - ##### IDE(Spring Tool Suite 4) 
   - ##### JDK 1.8
-  - ##### Spring Boot 2.2.7
+  - ##### Spring Boot 2.4.8
   - ##### Maven 3.3.9
   - ##### MySQL 5.7.21
 
@@ -34,3 +34,5 @@
   	- ###### https://tychejin.tistory.com/178  
   - ##### [Spring Boot] REST API 게시판 만들기(12) - Content Negotiation 설정
   	- ###### https://tychejin.tistory.com/179  
+  - ##### [Spring Boot] REST API 게시판 만들기(13) - 예외 처리 및 테스트
+  	- ###### https://tychejin.tistory.com/180
