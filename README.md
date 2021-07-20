@@ -5,8 +5,8 @@
 - #### 개발 환경
   - ##### IDE(Spring Tool Suite 4) 
   - ##### JDK 1.8
-  - ##### Spring Boot 2.2.7
-  - ##### Maven 3.3.9
+  - ##### Spring Boot 2.4.8
+  - ##### Maven 3.8.1
   - ##### MySQL 5.7.21
 
 - #### 개발 설명
