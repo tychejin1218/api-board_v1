@@ -20,7 +20,7 @@ import com.api.board.service.BoardService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Api(tags = "게시글 관련한 API : /board")
+@Api(tags = "게시글 API : Board", description = "게시글 목록 조회, 상세 조회, 등록, 삭제, 수정 API")
 @RequestMapping("/board")
 @RestController
 public class BoardController {
