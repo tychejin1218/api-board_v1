@@ -46,7 +46,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
  
     private ApiInfo getApiInfo() {
         return new ApiInfoBuilder().title("REST API 게시판 만들기")
-        						   .description("API Docs")
+        						   .description("게시판 관련한 API")
         						   .version("1.0")
         						   .build();
     }
