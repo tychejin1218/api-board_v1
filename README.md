@@ -37,4 +37,6 @@
   - ##### [Spring Boot] REST API 게시판 만들기(13) - 예외 처리 및 테스트
   	- ###### https://tychejin.tistory.com/180
   - ##### [Spring Boot] REST API 게시판 만들기(14) - Swagger 적용
-  	- ###### https://tychejin.tistory.com/181
+  	- ###### https://tychejin.tistory.com/181  	
+  - ##### [Spring Boot] REST API 게시판 만들기(15) - Lombok 적용
+  	- ###### https://tychejin.tistory.com/185  	
