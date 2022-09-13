@@ -8,6 +8,12 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.apache.tomcat.util.json.JSONParser;
+import org.springframework.boot.configurationprocessor.json.JSONArray;
+
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 @ApiModel(value = "게시글 정보 : Board", description = "게시글 정보")
 @XmlRootElement(name = "board")
@@ -41,4 +47,6 @@ public class Board {
     String upd_user_id;
     @ApiModelProperty(value = "게시글 수정 일시")
     String upd_date;
+
+
 }

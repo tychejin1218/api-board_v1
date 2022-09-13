@@ -20,4 +20,6 @@ public interface BoardMapper {
     
     /** 게시글 삭제 */
     public int deleteBoard(int board_seq) throws Exception;
+
+
 }

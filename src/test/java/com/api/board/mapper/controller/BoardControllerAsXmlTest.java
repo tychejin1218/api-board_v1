@@ -1,4 +1,4 @@
-package com.api.board.controller;
+package com.api.board.mapper.controller;
  
 import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;

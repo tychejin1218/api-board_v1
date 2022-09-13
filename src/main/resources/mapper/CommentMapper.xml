@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.api.board.mapper.CommentMapper">
+
+	<insert id="insert" parameterType="com.api.board.domain.Comment">
+		insert into tbl_comment
+		    ( commentId, content, board_seq)
+		values ( commentId.nextval, #{content}, #{board_seq})
+	</insert>
+	
+	<select id="read" resultType="com.api.board.domain.Comment">
+		select *
+		from tbl_comment where commentId = #{commentId}
+	</select>
+
+	<delete id="delete">
+		delete from tbl_comment where commentId = #{commentId}
+	</delete>
+
+	<update id="update">
+		update tbl_comment set content = #{content} where commentId = #{commentId}
+	</update>
+
+	<select id="getListWithPaging" resultType="com.api.board.domain.Comment">
+		<![CDATA[ select * from
+               (select /*+INDEX_DESC(tbl_comment pk_comment)*/
+					rownum rn, commentId, content
+ 				from tbl_comment
+ 				where ]]>
+		 <![CDATA[
+                   rownum <= #{pageNum} * #{amount}
+				)
+ 		where rn > (#{pageNum} -1) * #{amount}]]>
+	</select>
+
+	<select id="getTotalCount" resultType="int">
+		select count(*) from tbl_comment where commentId > 0
+	</select>
+    
+</mapper>

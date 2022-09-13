@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.api.board.mapper.UploadMapper">
+
+    <select id="getUploadList" resultType="com.api.board.domain.UploadFiles">
+        select * from attach where board_seq = #{board_seq}
+    </select>
+
+    <select id="getUploadDetail" parameterType="int" resultType="com.api.board.domain.UploadFiles">
+        select * from attach
+        WHERE img_seq = #{img_seq}
+    </select>
+
+    <insert id="insertUpload" parameterType="com.api.board.domain.UploadFiles">
+        insert into attach (img_seq, fileName, uuid, folderPath, board_seq)
+        values (img_seq.nextval, #{fileName}, #{uuid}, #{folderPath}, board_seq.CURRVAL)
+    </insert>
+
+    <select id="getOldFiles" resultType="com.api.board.domain.UploadFiles">
+        select * from attach
+        where folderPath = to_char(sysdate-1, 'yyyy\mm\dd')
+
+    </select>
+
+
+</mapper>

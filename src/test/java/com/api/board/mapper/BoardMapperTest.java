@@ -27,7 +27,7 @@ public class BoardMapperTest {
 	@Autowired
 	BoardMapper boardMapper;
 	
-	int boardSeq = 0;
+	int board_Seq = 0;
 	
 	/** 게시글 목록 조회 시 NULL 아니면 테스트 통과 */
 	@Test
@@ -49,9 +49,9 @@ public class BoardMapperTest {
 
 		try {
 						
-			if(boardSeq != 0) {		
+			if(board_Seq != 0) {
 				
-				Board boardDetail = boardMapper.getBoardDetail(boardSeq);
+				Board boardDetail = boardMapper.getBoardDetail(board_Seq);
 				assertNotNull(boardDetail);
 			}
 			
@@ -85,13 +85,13 @@ public class BoardMapperTest {
 	@Rollback(true)
 	@Test	
 	public void testUpdateBoard() {
-		
+
 		try {			
 						
-			if(boardSeq != 0) {				
+			if(board_Seq != 0) {
 
 				Board board = new Board();
-				board.setBoard_seq(boardSeq);
+				board.setBoard_seq(board_Seq);
 				board.setBoard_subject("게시글 제목 수정");
 				board.setBoard_content("게시글 내용 수정");
 				
@@ -111,9 +111,9 @@ public class BoardMapperTest {
 
 		try {
 					
-			if(boardSeq != 0) {
+			if(board_Seq != 0) {
 				
-				int result = boardMapper.deleteBoard(boardSeq);			
+				int result = boardMapper.deleteBoard(board_Seq);
 				assertTrue(result == 1);
 			}
 			

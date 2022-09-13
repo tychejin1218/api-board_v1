@@ -8,10 +8,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.http.converter.xml.MarshallingHttpMessageConverter;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.api.board.interceptor.BoardInterceptor;
@@ -21,6 +24,8 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.module.jaxb.JaxbAnnotationModule;
  
 @ComponentScan(basePackages = {"com.api.board.controller"}, useDefaultFilters = false, includeFilters = {@Filter(Controller.class), @Filter(ControllerAdvice.class)})
+@ComponentScan(basePackages = {"com.api.board.task"})
+@EnableScheduling
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
  
@@ -69,4 +74,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
 				  .mediaType("json", MediaType.APPLICATION_JSON)
 				  .mediaType("xml", MediaType.APPLICATION_XML);
 	}
+
+
+//    public void configureViewResolvers(ViewResolverRegistry registry) {
+//        registry.jsp("/WEB-INF/views/", ".jsp");
+//    }
 }

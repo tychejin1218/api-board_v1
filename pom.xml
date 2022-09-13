@@ -42,11 +42,7 @@
 		    <version>2.1.4</version>
 		</dependency>
 	     
-	    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-		<dependency>
-		    <groupId>mysql</groupId>
-		    <artifactId>mysql-connector-java</artifactId>
-		</dependency>
+
 		
 		<!-- https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4.1 -->
 		<dependency>
@@ -99,7 +95,15 @@
 		    <groupId>org.projectlombok</groupId>
 		    <artifactId>lombok</artifactId>
 		</dependency>
-		
+		<!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper -->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<version>9.0.48</version>
+		</dependency>
+
+
+
 	</dependencies>
 
 	<build>
