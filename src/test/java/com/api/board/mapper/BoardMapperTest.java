@@ -21,6 +21,8 @@ import com.api.board.domain.Board;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class BoardMapperTest {
+	
+	//given, when, then
 
 	Logger logger = LoggerFactory.getLogger(BoardMapperTest.class);
 

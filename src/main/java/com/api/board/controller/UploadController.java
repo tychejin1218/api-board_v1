@@ -9,17 +9,21 @@ import lombok.extern.log4j.Log4j2;
 import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.util.UriUtils;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -156,11 +160,25 @@ public class UploadController {
         }
     }
 
-    @GetMapping(value="/uploadList")
-    public UploadFilesList getUploadFilesList (int board_seq) throws Exception {
+    @GetMapping(value="/uploadList/{board_seq}")
+    public ResponseEntity<UploadFilesList> getUploadFilesList (@PathVariable String board_seq) throws Exception {
         UploadFilesList uploadFilesList = new UploadFilesList();
-        uploadFilesList.setUploadFilesList(uploadService.getUploadList(board_seq));
-        return uploadFilesList;
+        uploadFilesList.setUploadFilesList(uploadService.getUploadList(Integer.parseInt(board_seq)));
+        return new ResponseEntity<>(uploadFilesList, HttpStatus.OK);
+    }
+    
+    @GetMapping("/download/{img_seq}")
+    public ResponseEntity<Resource> download(@PathVariable int img_seq) throws Exception {
+        UploadFiles uploadFiles = uploadService.getUploadDetail(img_seq);
+        UrlResource resource = new UrlResource("file:" + uploadPath + File.separator + 
+        		uploadFiles.getFolderPath() + File.separator + uploadFiles.getUuid() + "_" + uploadFiles.getFileName());
+        String encodedUploadFileName = UriUtils.encode(uploadFiles.getFileName(), StandardCharsets.UTF_8);
+
+        String contentDisposition = "attachment; filename=\"" + encodedUploadFileName + "\"";
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, contentDisposition)
+                .body(resource);
     }
 
 
@@ -222,16 +240,5 @@ public class UploadController {
 //
 //    }
 
-//    @GetMapping("/download/{img_seq}")
-//    public ResponseEntity<Resource> download(@PathVariable int img_seq) throws Exception {
-//        UploadFiles uploadFiles = uploadService.getUploadDetail(img_seq);
-//        UrlResource resource = new UrlResource("file:" + "C:\\Temp\\upload"+File.separator+uploadFiles.getFullName());
-//        String encodedUploadFileName = UriUtils.encode(uploadFiles.getFileName(), StandardCharsets.UTF_8);
-//
-//        String contentDisposition = "attachment; filename=\"" + encodedUploadFileName + "\"";
-//
-//        return ResponseEntity.ok()
-//                .header(HttpHeaders.CONTENT_DISPOSITION, contentDisposition)
-//                .body(resource);
-//    }
+    
 }

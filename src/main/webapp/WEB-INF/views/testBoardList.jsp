@@ -40,8 +40,8 @@
 
                     output += '<tr>'
                     output += '<td>' + this.board_seq + '</td>'
-                    output += '<td>' + this.board_subject + '</td>'
-                    output += "<td><a href='/testBoardContent?board_seq="+this.board_seq+"'>" + this.board_writer + "</td>"
+                    output += "<td><a href='/testBoardContent?board_seq="+this.board_seq+"'>" + this.board_subject + "</td>"
+                    output += '<td>' + this.board_writer + '</td>'
                     output += '<td>' + this.ins_date + '</td>'
                     output += '</tr>'
                 });
