@@ -23,6 +23,8 @@ public class UploadFiles {
     private String uuid;
     @ApiModelProperty(value = "첨부파일 폴더경로")
     private String folderPath;
+    @ApiModelProperty(value = "첨부파일 게시글 번호")
+    private int board_seq;
 
 
     public UploadFiles() {

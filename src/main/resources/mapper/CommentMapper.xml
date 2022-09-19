@@ -6,8 +6,8 @@
 
 	<insert id="insert" parameterType="com.api.board.domain.Comment">
 		insert into tbl_comment
-		    ( commentId, content, board_seq)
-		values ( commentId.nextval, #{content}, #{board_seq})
+		    ( content, board_seq)
+		values ( #{content}, #{board_seq})
 	</insert>
 	
 	<select id="read" resultType="com.api.board.domain.Comment">

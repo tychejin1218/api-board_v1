@@ -23,13 +23,13 @@
 </div>
 
 
-<script type="text/javascript" src="/webjars/jquery/3.6.0/jquery.min.js">
-</script>
+<script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
     $(function(){
         let boardList = null;
         $.ajax({
-            url: "/board",
+            url: "/boards",
             method: "get",
             dataType: "json",
             success:function (data) {

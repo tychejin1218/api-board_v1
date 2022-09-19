@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/comment")
+@RequestMapping("/comments")
 @Log4j2
 public class CommentController {
 
@@ -68,6 +68,7 @@ public class CommentController {
 
     // 삭제
     @DeleteMapping("/{commentId}")
+
     public ResponseEntity<String> removeCommnet (@PathVariable ("commentId") int commentId) {
         log.info("remove : " + commentId);
 

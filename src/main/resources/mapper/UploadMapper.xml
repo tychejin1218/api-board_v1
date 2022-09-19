@@ -14,13 +14,13 @@
     </select>
 
     <insert id="insertUpload" parameterType="com.api.board.domain.UploadFiles">
-        insert into attach (img_seq, fileName, uuid, folderPath, board_seq)
-        values (img_seq.nextval, #{fileName}, #{uuid}, #{folderPath}, board_seq.CURRVAL)
+        insert into attach (fileName, uuid, folderPath, board_seq)
+        values (#{fileName}, #{uuid}, #{folderPath}, #{board_seq})
     </insert>
 
     <select id="getOldFiles" resultType="com.api.board.domain.UploadFiles">
         select * from attach
-        where folderPath = to_char(sysdate-1, 'yyyy\mm\dd')
+        where folderPath = DATE_FORMAT(now()- interval 1 day , '%Y/%m/%d')
 
     </select>
 

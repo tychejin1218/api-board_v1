@@ -13,14 +13,13 @@
 	<div class = "uploadResult" id = "downFile">
 	</div>
 
-<script type="text/javascript" src="/webjars/jquery/3.6.0/jquery.min.js">
-	</script>
+	<script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
    		$(function(){
         	let board_seq = $("[name='board_seq']").val();
         	console.log(board_seq);
         	$.ajax({
-            	url: "/board/uploadList/"+board_seq,
+            	url: "/boards/uploadList/"+board_seq,
             	method: "get",
             	dataType: "json",
             	success:function (data) {
@@ -32,8 +31,8 @@
                 	$.each(uploadFilesList, function () {
 						output += "<div>";
                     	output += "<p>"+this.fileName+"</p>"
-                    	output += "<img src='/board/display?fileName=" + this.thumbnailURL+"'>";
-                    	output += "<form action = 'board/download/" + this.img_seq +"'>"
+                    	output += "<img src='/boards/display?fileName=" + this.thumbnailURL+"'>";
+                    	output += "<form action = 'boards/download/" + this.img_seq +"'>"
                     	output += "<input type = 'submit' value = 'download'></input></form>"
                     	output += "</div>"
                     	

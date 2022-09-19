@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/board")
+@RequestMapping("/boards")
 @Log4j2
 @Api(tags = "업로드 API : Attach", description = "첨부파일 업로드, 첨부파일 조회, 첨부파일 삭제")
 public class UploadController {

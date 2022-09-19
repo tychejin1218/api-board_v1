@@ -1,7 +1,6 @@
 package com.api.board.config;
 
-import javax.sql.DataSource;
-
+import com.zaxxer.hikari.HikariDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -17,7 +16,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
 
-import com.zaxxer.hikari.HikariDataSource;
+import javax.sql.DataSource;
 
 @ComponentScan(basePackages = "com.api.board.service")
 @MapperScan(basePackages = "com.api.board.mapper", sqlSessionFactoryRef = "sqlSessionFactory")

@@ -69,7 +69,7 @@ public class BoardControllerAsJsonTest {
  
     	try {
 			
-    		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/board")
+    		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/boards")
     									 .accept(MediaType.APPLICATION_JSON_VALUE))
 				 					 	 .andReturn();
     			
@@ -88,7 +88,7 @@ public class BoardControllerAsJsonTest {
     		
     		if (boardSeq != 0) {
             	
-            	MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/board/" + boardSeq)
+            	MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/boards/" + boardSeq)
                         					 .accept(MediaType.APPLICATION_JSON_VALUE))
                         					 .andReturn();
 
@@ -110,7 +110,7 @@ public class BoardControllerAsJsonTest {
         insertBoard.setBoard_subject("게시글 제목 등록");
         insertBoard.setBoard_content("게시글 내용 등록");
  
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post("/board")
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post("/boards")
         							 .contentType(MediaType.APPLICATION_JSON_VALUE)
         							 .content(this.mapToJson(insertBoard)))
         							 .andReturn();
@@ -132,7 +132,7 @@ public class BoardControllerAsJsonTest {
                 updateBoard.setBoard_subject("게시글 제목 수정");
                 updateBoard.setBoard_content("게시글 내용 수정");
          
-                MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.put("/board/" + boardSeq)
+                MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.put("/boards/" + boardSeq)
                 							 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 							 .content(this.mapToJson(updateBoard)))
                 							 .andReturn();
@@ -154,7 +154,7 @@ public class BoardControllerAsJsonTest {
     		
     		if (boardSeq != 0) {
         		
-                MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.delete("/board/" + boardSeq))
+                MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.delete("/boards/" + boardSeq))
                 							 .andReturn();
          
                 assertEquals(200, mvcResult.getResponse().getStatus());

@@ -24,8 +24,9 @@
 <%--</form>--%>
 
 
-        <script type="text/javascript" src="/webjars/jquery/3.6.0/jquery.min.js">
-        </script>
+<%--        <script type="text/javascript" src="/webjars/jquery/3.6.0/jquery.min.js">--%>
+<%--        </script>--%>
+        <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
             let uploadFiles = null;
             $("#uploadBtn").click(function ( ) {
@@ -47,7 +48,7 @@
                 // 실제 업로드 부분
                 // upload ajax
                 $.ajax({
-                    url: '/board/uploadAjax', // 경로
+                    url: '/boards/uploadAjax', // 경로
                     processData: false, // 기본값은 true
                     // ajax 통신을 통해 데이터를 전송할 때, 기본적으로 key와 value값을 Query String으로 변환해서 보냅니다.
                     contentType: false, // multipart/form-data타입을 사용하기위해 false로 지정합니다.
@@ -90,7 +91,7 @@
 
                 $.ajax({
                     method: 'post',
-                    url: '/board', // 경로
+                    url: '/boards', // 경로
                     data: {
                         'jsonBoard' : JSON.stringify(jsonBoard),
                         'uploadFilesList' : uploadFilesList},
@@ -117,7 +118,7 @@
                     // divArea.append("<img src='/display?fileName=" + arr[i].thumbnailURL+"'>");
                     str += "<div>";
                     str += "<p>"+arr[i].fileName+"</p>"
-                    str += "<img src='/board/display?fileName=" + arr[i].thumbnailURL+"'>";
+                    str += "<img src='/boards/display?fileName=" + arr[i].thumbnailURL+"'>";
                     str += "<button class='removeBtn' data-name='"+arr[i].imageURL+"'>Remove</button>";
                     str += "</div>"
                 }
@@ -134,7 +135,7 @@
                 console.log(fileName);
                 console.log(targetDiv);
 
-                $.post('/board/removeFile',{fileName : fileName}, function (result){
+                $.post('/boards/removeFile',{fileName : fileName}, function (result){
 
                     console.log(result);
                     if (result === true){

@@ -14,7 +14,9 @@
     </select>
 
     <insert id="insertBoard" parameterType="com.api.board.domain.Board">
-        insert into board (board_seq,
+
+
+        insert into board (
                            board_re_ref,
                            board_re_lev,
                            board_re_seq,
@@ -22,8 +24,10 @@
                            board_subject,
                            board_content,
                            ins_user_id,
-                           upd_user_id)
-        values (board_seq.nextval,
+                           upd_user_id,
+                           board_hits,
+                           del_yn)
+        values (
                 0
                , 0
                , 0
@@ -32,7 +36,13 @@
                , #{board_content}
                , 'TEST'
                , 'TEST'
+               , 0
+               , 'N'
                )
+
+        <selectKey resultType="int" keyProperty="board_seq" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
     </insert>
 
     <delete id="updateBoard" parameterType="com.api.board.domain.Board">

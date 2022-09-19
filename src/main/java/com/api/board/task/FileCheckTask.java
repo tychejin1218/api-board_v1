@@ -2,7 +2,6 @@ package com.api.board.task;
 
 import com.api.board.domain.UploadFiles;
 import com.api.board.service.UploadService;
-import com.sun.xml.internal.ws.policy.EffectiveAlternativeSelector;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

@@ -1,33 +1,24 @@
 package com.api.board.controller;
- 
-import com.api.board.domain.RequestVO;
+
+import com.api.board.domain.Board;
+import com.api.board.domain.Boards;
 import com.api.board.domain.UploadFiles;
+import com.api.board.exception.ResourceNotFoundException;
+import com.api.board.service.BoardService;
 import com.api.board.service.UploadService;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.log4j.Log4j2;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.api.board.domain.Board;
-import com.api.board.domain.Boards;
-import com.api.board.exception.ResourceNotFoundException;
-import com.api.board.service.BoardService;
-
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 @Api(tags = "게시글 API : Board", description = "게시글 목록 조회, 상세 조회, 등록, 삭제, 수정 API")
-@RequestMapping("/board")
+@RequestMapping("/boards")
 @RestController
 @Log4j2
 public class BoardController {
@@ -75,13 +66,16 @@ public class BoardController {
         Gson gson = new Gson();
         Board board = gson.fromJson(jsonBoard, Board.class );
         boardService.insertBoard(board);
+        int board_seq = board.getBoard_seq();
 
         JSONArray jsonArray = jsonParsing(uploadFilesList);
 
         for(int i = 0; i < jsonArray.size(); i++){
             JSONObject jsonObject = (JSONObject) jsonArray.get(i);
+            jsonObject.put("board_seq", board_seq);
             log.info("jsonObject : " + jsonObject);
             UploadFiles uploadFiles = gson.fromJson(String.valueOf(jsonObject), UploadFiles.class);
+            uploadFiles.setBoard_seq(board_seq);
             uploadService.insertUpload(uploadFiles);
         }
 
